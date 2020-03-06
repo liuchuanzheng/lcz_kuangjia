@@ -1,0 +1,2 @@
+rootProject.name='lcz_kuangjia'
+include ':app'
