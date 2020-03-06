@@ -19,6 +19,8 @@ import butterknife.ButterKnife;
  * 注意事项:
  */
 public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> extends AppCompatActivity {
+    public V mView;
+    public P mPresenter;
     /**
      * 因为系统自带的设置view方法有很多种,id,view都可以.所以这里不像
      * 大家都用id的封装方式,那是限制了自己
@@ -30,13 +32,30 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> e
      */
     protected abstract void doYourself();
 
+    /**
+     * 创建view，不要用实现的方式，要new一个，方便直接查看
+     * 创建presenter
+     * 时机是展示ui之前。因为这里只涉及到创建一些mvp类。不会影响功能。
+     */
+    protected abstract void initMVP();
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        initMVP();
         super.onCreate(savedInstanceState);
         setContentView();
         ButterKnife.bind(this);
         initStatusColor();
         doYourself();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        if (mPresenter != null) {
+            mPresenter.detachView();
+            mPresenter = null;
+        }
     }
 
     /**
