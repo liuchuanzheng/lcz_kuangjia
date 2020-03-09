@@ -1,20 +1,17 @@
 package com.liuchuanzheng.lcz_kuangjia.base;
 
 
+import com.liuchuanzheng.lcz_kuangjia.net.BaseObserver;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
 
-public class BasePresenter<V extends BaseView> {
+public abstract class BasePresenter<V extends BaseView> {
 
     private CompositeDisposable compositeDisposable;
     public V mView;
-
-    /**
-     * 这个后面可以直接用   Example：apiServer.login(username, password)；
-     */
-    protected API.WAZApi apiServer = RetrofitService.getInstance().getApiService();
 
     public BasePresenter(V mView) {
         this.mView = mView;
@@ -50,4 +47,10 @@ public class BasePresenter<V extends BaseView> {
             compositeDisposable.dispose();
         }
     }
+
+    /**
+     * 这里不指定一个model,因为实际业务中会用到多个model
+     * 只是提醒使用者,复写此方法去实现
+     */
+    public abstract void initModel();
 }

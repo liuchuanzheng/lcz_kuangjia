@@ -1,5 +1,12 @@
-apply plugin: 'com.android.application'
+import java.text.SimpleDateFormat
 
+apply plugin: 'com.android.application'
+//获取打包的时间
+def releaseTime() {
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+    String s = sdf.format(new Date())
+    return s
+}
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -13,17 +20,48 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+    signingConfigs {
+        release {
+            keyAlias 'medical'
+            keyPassword '123456'
+            storeFile file('../keys/medical.keystore')
+            storePassword '123456'
+        }
+    }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            buildConfigField 'boolean', 'LOG', 'false'
+        }
+        debug {
+            //签名也使用正式签名
+            signingConfig signingConfigs.release
+            buildConfigField 'boolean', 'LOG', 'true'
         }
     }
     // Butterknife requires Java 8.
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
+    }
+    flavorDimensions 'default'
+    productFlavors {
+        urlTest {
+            //测试地址
+            buildConfigField 'String', 'SERVER_URL', '"http://mvv.51vision.com:19003/api/mvvCloud/ExpertApp/"'
+        }
+    }
+    //修改生成的apk名字
+    applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            if ("release".equals(variant.buildType.name)) {
+                def finalApkName = "刘传政框架_${variant.productFlavors[0].name}_${variant.buildType.name}_v${defaultConfig.versionName}_${releaseTime()}.apk"
+                outputFileName = finalApkName
+            }
+        }
     }
 
 }
