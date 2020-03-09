@@ -1,7 +1,17 @@
 package com.liuchuanzheng.lcz_kuangjia.base;
 
 
+import android.app.Activity;
+
+import com.liuchuanzheng.lcz_kuangjia.module.main.bean.LoginRequestBean;
+import com.liuchuanzheng.lcz_kuangjia.module.main.bean.LoginResponseBean;
+import com.liuchuanzheng.lcz_kuangjia.net.BaseRequestBean;
+import com.liuchuanzheng.lcz_kuangjia.net.BaseResponseBean;
 import com.liuchuanzheng.lcz_kuangjia.net.RetrofitManager;
+
+import io.reactivex.Observer;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * @author 刘传政
@@ -19,7 +29,9 @@ public class BaseModel {
     }
 
     public class Main {
+        public void login(BaseRequestBean<LoginRequestBean> requestBean, Observer<BaseResponseBean<LoginResponseBean>> observer) {
 
+        }
     }
 
 }
