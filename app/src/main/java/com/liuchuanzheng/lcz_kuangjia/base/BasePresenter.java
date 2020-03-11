@@ -4,6 +4,7 @@ package com.liuchuanzheng.lcz_kuangjia.base;
 import com.liuchuanzheng.lcz_kuangjia.net.BaseObserver;
 
 import io.reactivex.Observable;
+import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -32,7 +33,13 @@ public abstract class BasePresenter<V extends BaseView> {
         return mView;
     }
 
-    public void addDisposable(Observable<?> observable, BaseObserver observer) {
+    /**
+     * 将被观察者和观察者建立订阅,并将此次请求加入管理列表,以便于在ondestory等中断开连接
+     *
+     * @param observable
+     * @param observer
+     */
+    public void goToNet(Observable<?> observable, BaseObserver observer) {
         if (compositeDisposable == null) {
             compositeDisposable = new CompositeDisposable();
         }
@@ -42,15 +49,9 @@ public abstract class BasePresenter<V extends BaseView> {
                         .subscribeWith(observer));
     }
 
-    private void removeDisposable() {
+    public void removeDisposable() {
         if (compositeDisposable != null) {
             compositeDisposable.dispose();
         }
     }
-
-    /**
-     * 这里不指定一个model,因为实际业务中会用到多个model
-     * 只是提醒使用者,复写此方法去实现
-     */
-    public abstract void initModel();
 }

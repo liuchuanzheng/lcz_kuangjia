@@ -1,5 +1,6 @@
 package com.liuchuanzheng.lcz_kuangjia.module.main.contract;
 
+import com.liuchuanzheng.lcz_kuangjia.base.BasePresenter;
 import com.liuchuanzheng.lcz_kuangjia.base.BaseView;
 import com.liuchuanzheng.lcz_kuangjia.module.main.bean.LoginRequestBean;
 import com.liuchuanzheng.lcz_kuangjia.module.main.bean.LoginResponseBean;
