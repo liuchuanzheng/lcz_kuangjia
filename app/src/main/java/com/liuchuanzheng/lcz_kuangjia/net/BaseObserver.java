@@ -18,7 +18,7 @@ public abstract class BaseObserver<T extends BaseResponseBean> extends Disposabl
     private BaseView mView;
     private boolean isShowDialog;
 
-    public <V extends BaseView> BaseObserver(V mView) {
+    public BaseObserver(BaseView mView) {
         this.mView = mView;
     }
 

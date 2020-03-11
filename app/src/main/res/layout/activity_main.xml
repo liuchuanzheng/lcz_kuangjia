@@ -13,4 +13,50 @@
         android:layout_height="wrap_content"
         android:text="登录" />
 
+    <Button
+        android:id="@+id/btn_content"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="显示正常" />
+
+    <Button
+        android:id="@+id/btn_empty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="空布局" />
+
+    <Button
+        android:id="@+id/btn_loading"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="loading布局" />
+
+    <Button
+        android:id="@+id/btn_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="错误" />
+
+    <Button
+        android:id="@+id/btn_no_network"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="网络错误" />
+
+    <com.classic.common.MultipleStatusView
+        android:id="@+id/multiple_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:loadingView="@layout/custom_loading_view"
+        app:emptyView="@layout/custom_empty_view"
+        app:errorView="@layout/custom_error_view"
+        app:noNetworkView="@layout/custom_no_network_view">
+
+        <TextView
+            android:gravity="center"
+            android:text="正常内容"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </com.classic.common.MultipleStatusView>
+
 </LinearLayout>

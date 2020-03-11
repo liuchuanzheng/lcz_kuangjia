@@ -1,6 +1,11 @@
 package com.liuchuanzheng.lcz_kuangjia.base;
 
+/**
+ * 这个view其实全指网络相关的操作.为了便于观看.
+ * 至于logding框等还是在activity中操作
+ */
 public interface BaseView {
+
     /**
      * 对网络返回的json进行分类
      */

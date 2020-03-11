@@ -24,7 +24,7 @@ public class MainActivityPresenter extends BasePresenter<IContract.MainActivity.
         String md5Password = MD5Utils.MD5(requestBean.getRequestData().getExpertPwd());
         requestBean.getRequestData().setExpertPwd(md5Password);
         goToNet(RetrofitManager.create().login(requestBean),
-                new BaseObserver<BaseResponseBean<LoginResponseBean>>(mView) {
+                new BaseObserver<BaseResponseBean<LoginResponseBean>>(mView, true) {
                     @Override
                     protected void onResult(BaseResponseBean<LoginResponseBean> responseBean, BaseView.ResultType resultType, String errorMsg) {
                         mView.onLogin(responseBean, resultType, errorMsg);

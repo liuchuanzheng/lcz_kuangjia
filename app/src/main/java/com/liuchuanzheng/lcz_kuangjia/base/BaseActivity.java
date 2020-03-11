@@ -18,7 +18,7 @@ import butterknife.ButterKnife;
  * 作用:基类activity.不管是包含网络请求的,还是不包含网络请求的都用这个
  * 注意事项:
  */
-public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> extends AppCompatActivity {
+public abstract class BaseActivity<V extends BaseView, P extends BasePresenter> extends AppCompatActivity {
     public V mView;
     public P mPresenter;
     /**
@@ -72,4 +72,5 @@ public abstract class BaseActivity<V extends BaseView,P extends BasePresenter> e
                 .fitsSystemWindows(true)
                 .init();
     }
+
 }
