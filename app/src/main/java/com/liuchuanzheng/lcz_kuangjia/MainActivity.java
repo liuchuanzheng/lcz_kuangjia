@@ -19,6 +19,7 @@ import com.liuchuanzheng.lcz_kuangjia.net.BaseResponseBean;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import tech.linjiang.pandora.Pandora;
 
 public class MainActivity extends BaseActivity<IContract.MainActivity.View, MainActivityPresenter> {
 
@@ -36,6 +37,8 @@ public class MainActivity extends BaseActivity<IContract.MainActivity.View, Main
     Button btnError;
     @BindView(R.id.btn_no_network)
     Button btnNoNetwork;
+    @BindView(R.id.btn_kongzhitai)
+    Button btnKongzhitai;
 
     @Override
     protected void initMVP() {
@@ -45,7 +48,7 @@ public class MainActivity extends BaseActivity<IContract.MainActivity.View, Main
     }
 
 
-    @OnClick({R.id.btn_login, R.id.btn_content, R.id.btn_empty, R.id.btn_loading, R.id.btn_error, R.id.btn_no_network})
+    @OnClick({R.id.btn_login, R.id.btn_content, R.id.btn_empty, R.id.btn_loading, R.id.btn_error, R.id.btn_no_network, R.id.btn_kongzhitai})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.btn_login:
@@ -69,6 +72,9 @@ public class MainActivity extends BaseActivity<IContract.MainActivity.View, Main
                 break;
             case R.id.btn_no_network:
                 multipleStatusView.showNoNetwork();
+                break;
+            case R.id.btn_kongzhitai:
+                Pandora.get().open();
                 break;
         }
     }

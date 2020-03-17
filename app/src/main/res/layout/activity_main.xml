@@ -43,6 +43,12 @@
         android:layout_height="wrap_content"
         android:text="网络错误" />
 
+    <Button
+        android:id="@+id/btn_kongzhitai"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="控制台" />
+
     <com.classic.common.MultipleStatusView
         android:id="@+id/multiple_status_view"
         android:layout_width="match_parent"
