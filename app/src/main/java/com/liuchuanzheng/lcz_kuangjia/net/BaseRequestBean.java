@@ -32,7 +32,7 @@ public class BaseRequestBean<T> {
     }
 
     private String getAccessToken() {
-        UserManager.UsetInfo userInfo = UserManager.getInstence().getUserInfo();
+        UserManager.UserInfo userInfo = UserManager.getInstence().getUserInfo();
         return userInfo.accessToken;
     }
 

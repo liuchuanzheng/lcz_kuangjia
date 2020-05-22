@@ -136,7 +136,7 @@ dependencies {
     /*▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽*/
     //   地址：https://github.com/Blankj/AndroidUtilCode
     //  通用工具类库
-    api 'com.blankj:utilcode:1.22.0'
+    api 'com.blankj:utilcode:1.25.9'
     /*△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△*/
     /*▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽*/
     //   地址：https://github.com/CymChad/BaseRecyclerViewAdapterHelper
@@ -164,6 +164,14 @@ dependencies {
     //    implementation 'com.github.whataa:pandora-no-op:v2.0.3'
     // 如果你的项目使用的是AndroidX, 替换为以下方式
     debugImplementation 'com.github.whataa:pandora:androidx_v2.1.0'
+    /*△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△*/
+
+    /*▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽*/
+    //   地址：https://blog.csdn.net/wanghao940101/article/details/79113856
+    // 数据库调试
+    //让手机和电脑处于一个局域网下，当项目跑起来的时候，在 logcat 里面会打印出这么一行：
+    //D/DebugDB: Open http://XXX.XXX.X.XXX:8080 in your browser
+    debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
     /*△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△*/
 
 }
