@@ -7,6 +7,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 import com.liuchuanzheng.lcz_kuangjia.base.Constant;
+import com.liuchuanzheng.lcz_kuangjia.util.activity.ActivityStackUtil;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.FormatStrategy;
 import com.orhanobut.logger.Logger;
@@ -60,9 +61,13 @@ public class MyApplication extends Application {
         myApplication = this;
         initLog();
         Logger.i(BuildConfig.FLAVOR + "--" + BuildConfig.BUILD_TYPE + "--" + BuildConfig.LOG + "--" + BuildConfig.SERVER_URL);
+        initActivityUtil();
     }
 
-
+    private void initActivityUtil() {
+        //利用生命周期的监听,设置自己的activity栈管理
+        registerActivityLifecycleCallbacks(new ActivityStackUtil.MyActivityLifecycleCallbacks());
+    }
     /**
      * 初始化logger库
      */
