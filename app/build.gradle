@@ -174,4 +174,10 @@ dependencies {
     debugImplementation 'com.amitshekhar.android:debug-db:1.0.0'
     /*△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△*/
 
+    /*▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽▽*/
+    //   地址：https://github.com/Ereza/CustomActivityOnCrash
+    //在Android程序中，程序有时会遇到各种之前没有遇到的问题，这时如果能够对程序进行额外判断就好的，CustomActivityOnCrash框架就实现的这个功能。如果你的程序出现崩溃，它会检测到（各种崩溃，比如空指针），会弹出一个页面，提示你程序崩溃，你是否要关闭程序，还是重新启动程序！
+    implementation 'cat.ereza:customactivityoncrash:2.3.0'
+    /*△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△△*/
+
 }

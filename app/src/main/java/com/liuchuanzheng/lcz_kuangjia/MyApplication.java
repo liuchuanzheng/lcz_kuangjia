@@ -21,6 +21,9 @@ import com.scwang.smartrefresh.layout.api.RefreshHeader;
 import com.scwang.smartrefresh.layout.api.RefreshLayout;
 import com.scwang.smartrefresh.layout.footer.ClassicsFooter;
 
+import cat.ereza.customactivityoncrash.config.CaocConfig;
+import tech.linjiang.pandora.Pandora;
+
 public class MyApplication extends Application {
     private static MyApplication myApplication;
     public Activity topActivity = null;
@@ -62,8 +65,18 @@ public class MyApplication extends Application {
         initLog();
         Logger.i(BuildConfig.FLAVOR + "--" + BuildConfig.BUILD_TYPE + "--" + BuildConfig.LOG + "--" + BuildConfig.SERVER_URL);
         initActivityUtil();
+        initCrash();
+        initDebugUtil();
     }
 
+    private void initDebugUtil() {
+
+        if (!BuildConfig.DEBUG) {
+            //关闭震动弹窗功能.默认是开启的
+            Pandora.get().disableShakeSwitch();
+        }
+
+    }
     private void initActivityUtil() {
         //利用生命周期的监听,设置自己的activity栈管理
         registerActivityLifecycleCallbacks(new ActivityStackUtil.MyActivityLifecycleCallbacks());
@@ -86,6 +99,23 @@ public class MyApplication extends Application {
                 return BuildConfig.LOG;
             }
         });
+    }
+
+    private void initCrash() {
+        CaocConfig.Builder.create()
+                .backgroundMode(CaocConfig.BACKGROUND_MODE_SILENT) //背景模式,开启沉浸式
+                .enabled(true) //是否启动全局异常捕获
+                .showErrorDetails(true) //是否显示错误详细信息
+                .showRestartButton(true) //是否显示重启按钮
+                .trackActivities(true) //是否跟踪Activity
+                .minTimeBetweenCrashesMs(2000) //崩溃的间隔时间(毫秒)
+                .errorDrawable(R.mipmap.ic_launcher) //错误图标
+                .restartActivity(MainActivity.class) //重新启动后的activity
+//                                .errorActivity(YourCustomErrorActivity.class) //崩溃后的错误activity
+//                                .eventListener(new YourCustomEventListener()) //崩溃后的错误监听
+                .apply();
+        //只需要在任何地方调用此句.就能模拟崩溃效果
+//        throw new RuntimeException("Boom!");
     }
 
 
